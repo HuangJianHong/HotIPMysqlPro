@@ -50,7 +50,7 @@ public class BlackListTopology {
         ).fieldsGrouping("split_bolt", new Fields("userid"));
 
         //指定任务的第三个bolt组件，将黑名单用户信息写入MySQL
-        builder.setBolt("blacklist_mysql_bolt", new BlackListTotalByWindowBolt()).shuffleGrouping("blacklist_countbolt");
+        builder.setBolt("blacklist_mysql_bolt", new BlackListMySQLBolt()).shuffleGrouping("blacklist_countbolt");
 
         //在本地运行任务
         Config config = new Config();
